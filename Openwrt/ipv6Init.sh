@@ -54,8 +54,8 @@ done < ${VersionScriptsLocationServer}
 equalIndex=`expr index "${Newifi_D2_ipv6_ver}" "=" `
 equalIndex=`expr ${equalIndex} + 1 `
 Newifi_D2_ipv6_ver_server=`expr substr "${Newifi_D2_ipv6_ver}" ${equalIndex} ${#Newifi_D2_ipv6_ver}`
-echo  ${Newifi_D2_ipv6_ver_local}
-echo  ${Newifi_D2_ipv6_ver_server}
+echo  Newifi_D2_ipv6_ver_local--${Newifi_D2_ipv6_ver_local}
+echo  Newifi_D2_ipv6_ver_server-${Newifi_D2_ipv6_ver_server}
 
 if test ${Newifi_D2_ipv6_ver_local} -eq ${Newifi_D2_ipv6_ver_server}
 then
