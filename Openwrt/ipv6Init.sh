@@ -4,13 +4,14 @@
 #DevoutPrayer
 #2019-9-17 14:59
 #--------------Set Auto Start----------------
+echo "mmp" >> mmp
 if test -e "/etc/init.d/ipv6Setting"
 then
 	echo `date` auto start ready.
 else
-	echo "#!/bin/sh /etc/rc.common/nSTART=99/nstart(){/n/usr/ipv6Settings/ipv6Init.sh/n}" > /etc/init.d/ipv6Setting
+	echo -e "#!/bin/sh /etc/rc.common\nSTART=101\nstart(){\n/usr/ipv6Settings/ipv6Init.sh\n}" > /etc/init.d/ipv6Setting
 	chmod -R 777 /etc/init.d/ipv6Setting
-	/etc/init.d/mystart enable
+	/etc/init.d/ipv6Setting enable
 fi
 #-----------Test IPv4 Connection-------------
 status=1
