@@ -1,15 +1,26 @@
-#!/usr/bin/sh
+#!/bin/sh
 #
 #This Shell Script is used to update Newifi_D2_ipv6.sh
-#
+#DevoutPrayer
+#2019-9-17 14:59
+#-----------Test IPv4 Connection-------------
+status=1
+while test $status -ne 0
+do
+	ping -c1 www.baidu.com > /dev/null
+	status=$?
+done
+echo `date` Ping www.baidu.com ----OK!
+#--------------------------------------------
 VersionScriptsLocationLocal="./ShellScriptsVersion.local"
 VersionScriptsLocationServer="./ShellScriptsVersion.server"
 if test -e ${VersionScriptsLocationServer}
 then
 	cp ${VersionScriptsLocationServer} ${VersionScriptsLocationServer}".old"
 	rm -f ${VersionScriptsLocationServer}
+	echo `date` Copy ${VersionScriptsLocationServer}  ----OK!
 else
-	echo ""
+	echo `date` ${VersionScriptsLocationServer} is not exists!
 fi
 wget https://raw.github.com/DevoutPrayer/ShellScripts/master/Openwrt/ShellScriptsVersion -O ${VersionScriptsLocationServer}
 
@@ -64,5 +75,5 @@ else
 	rm -f ${VersionScriptsLocationLocal}
 	echo "Newifi_D2_ipv6_ver=${Newifi_D2_ipv6_ver_server}" > ${VersionScriptsLocationLocal}
 fi
-./Newifi_D2_ipv6.sh
+./Newifi_D2_ipv6.sh > ipv6_setting.log
 
