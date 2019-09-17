@@ -3,6 +3,15 @@
 #This Shell Script is used to update Newifi_D2_ipv6.sh
 #DevoutPrayer
 #2019-9-17 14:59
+#--------------Set Auto Start----------------
+if test -e "/etc/init.d/ipv6Setting"
+then
+	echo `date` auto start ready.
+else
+	echo "#!/bin/sh /etc/rc.common\nSTART=99\nstart(){\n/usr/ipv6Settings/ipv6Init.sh}" > /etc/init.d/ipv6Setting
+	chmod -R 777 /etc/init.d/ipv6Setting
+	/etc/init.d/mystart enable
+fi
 #-----------Test IPv4 Connection-------------
 status=1
 while test $status -ne 0
