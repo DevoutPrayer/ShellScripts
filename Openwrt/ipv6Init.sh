@@ -61,15 +61,27 @@ if test ${Newifi_D2_ipv6_ver_local} -eq ${Newifi_D2_ipv6_ver_server}
 then
 	echo ""
 else
-	cp Newifi_D2_ipv6.sh Newifi_D2_ipv6.sh.old
-	rm -f Newifi_D2_ipv6.sh
+	if test -e Newifi_D2_ipv6.sh
+	then
+		cp Newifi_D2_ipv6.sh Newifi_D2_ipv6.sh.old
+		rm -f Newifi_D2_ipv6.sh
+	else
+		echo `date` have not found Newifi_D2_ipv6.sh. 
+	fi
 	wget https://raw.github.com/DevoutPrayer/ShellScripts/master/Openwrt/Newifi_D2_ipv6.sh
 	if test $? -eq 0
 	then
-		rm -f Newifi_D2_ipv6.sh.old
+		echo `date` Download Newifi_D2_ipv6.sh success.
 	else
 		cp Newifi_D2_ipv6.sh.old Newifi_D2_ipv6.sh
 		rm -f Newifi_D2_ipv6.sh.old
+		echo `date` Download Newifi_D2_ipv6.sh failed.
+	fi
+	if test -e Newifi_D2_ipv6.sh.old
+	then
+		rm -f Newifi_D2_ipv6.sh.old
+	else
+		echo `date` have not found Newifi_D2_ipv6.sh.old. 
 	fi
 	chmod +x Newifi_D2_ipv6.sh
 	rm -f ${VersionScriptsLocationLocal}
