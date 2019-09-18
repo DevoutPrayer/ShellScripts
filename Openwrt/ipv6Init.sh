@@ -12,10 +12,10 @@ else
 	then 
 		echo `date` loader already exist,plz check.
 	else
-		echo -e "#!/bin/sh\n	sleep 10\n	cd /usr/ipv6Settings\n	./ipv6Init.sh > ipv6Init.log" > /usr/ipv6Settings/loader.sh
+		echo -e "#!/bin/sh\n	sleep 10\n	cd /usr/ipv6Settings\n	./ipv6Init.sh &> ipv6Init.log" > /usr/ipv6Settings/loader.sh
 		chmod +x /usr/ipv6Settings/loader.sh
 	fi
- 	echo -e "#!/bin/sh /etc/rc.common\nSTART=101\nstart(){\n/usr/ipv6Settings/loader.sh\n}" > /etc/init.d/ipv6Setting
+ 	echo -e "#!/bin/sh /etc/rc.common\nSTART=101\nstart(){\n/usr/ipv6Settings/loader.sh &\n}" > /etc/init.d/ipv6Setting
 	chmod -R 777 /etc/init.d/ipv6Setting
 	/etc/init.d/ipv6Setting enable
 fi
@@ -104,5 +104,5 @@ else
 	rm -f ${VersionScriptsLocationLocal}
 	echo "Newifi_D2_ipv6_ver=${Newifi_D2_ipv6_ver_server}" > ${VersionScriptsLocationLocal}
 fi
-./Newifi_D2_ipv6.sh > Newifi_D2_ipv6.log
+./Newifi_D2_ipv6.sh & > Newifi_D2_ipv6.log
 
