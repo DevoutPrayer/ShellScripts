@@ -27,7 +27,7 @@ echo -e "\nnet.ipv6.conf.default.forwarding=2\nnet.ipv6.conf.all.forwarding=2\nn
 #Download&Run scripts 
 cd /usr
 mkdir ipv6Settings
-cd /ipv6Settings
+cd ipv6Settings
 wget https://raw.github.com/DevoutPrayer/ShellScripts/master/Openwrt/ipv6Init.sh
 chmod +x ipv6Init.sh
 ./ipv6Init.sh
