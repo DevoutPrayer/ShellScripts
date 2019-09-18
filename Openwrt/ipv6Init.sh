@@ -38,11 +38,12 @@ then
 else
 	echo `date` ${VersionScriptsLocationServer} is not exists!
 fi
-wget https://raw.github.com/DevoutPrayer/ShellScripts/master/Openwrt/ShellScriptsVersion -O ${VersionScriptsLocationServer}
+wget https://raw.github.com/DevoutPrayer/ShellScripts/master/Openwrt/ShellScriptsVersion -O ${VersionScriptsLocationServer} > /dev/null
 
 if test $? -eq 0
 then
 	rm -f ${VersionScriptsLocationServer}".old"
+	echo `date` Download ShellScriptsVersion ----OK!
 else
 	cp ${VersionScriptsLocationServer}".old" ${VersionScriptsLocationServer}
 	rm -f ${VersionScriptsLocationServer}".old"
@@ -84,7 +85,7 @@ else
 	else
 		echo `date` have not found Newifi_D2_ipv6.sh. 
 	fi
-	wget https://raw.github.com/DevoutPrayer/ShellScripts/master/Openwrt/Newifi_D2_ipv6.sh
+	wget https://raw.github.com/DevoutPrayer/ShellScripts/master/Openwrt/Newifi_D2_ipv6.sh > /dev/null
 	if test $? -eq 0
 	then
 		echo `date` Download Newifi_D2_ipv6.sh success.
